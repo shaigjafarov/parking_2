@@ -1,0 +1,762 @@
+<wsdl:definitions targetNamespace="http://quetzalcoatlus/EpulPaymentService" name="EpulPaymentService" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://quetzalcoatlus/EpulPaymentService" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <wsdl:types xmlns:xs="http://www.w3.org/2001/XMLSchema">
+        <xs:schema elementFormDefault="qualified" targetNamespace="http://quetzalcoatlus/EpulPaymentService">
+            <xs:element name="ListServices">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="request" type="tns:EpulPaymentStandardRequest"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="ListServicesResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="ListServicesResult" type="tns:ListServicesResult"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetPaymentServiceInfo">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="request" type="tns:EpulPaymentInfoRequest"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="GetPaymentServiceInfoResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="GetPaymentServiceInfoResult" type="tns:ServiceInfoResult"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="Pay">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="request" type="tns:EpulPayRequest"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="PayResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="PayResult" type="tns:PayResult"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="PaySmartCard">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="request" type="tns:EpulPayRequest"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="PaySmartCardResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="PaySmartCardResult" type="tns:EpulSmartCardPayResult"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="CheckTransaction">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="request" type="tns:EpulByNameRequest"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="CheckTransactionResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="CheckTransactionResult" type="tns:EpulCheckTransactionResult"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="ListHistory">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="request" type="tns:EpulByIdRequest"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="ListHistoryResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="ListHistoryResult" type="tns:EpulPaymentHistoryResult"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="ListCategories">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="request" type="tns:EpulPaymentStandardRequest"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="ListCategoriesResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="ListCategoriesResult" type="tns:ListPlainCategoriesResult"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="ListServicesByCategory">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="request" type="tns:EpulByIdRequest"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="ListServicesByCategoryResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="ListServicesByCategoryResult" type="tns:ListServicesResult"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="Fee">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="request" type="tns:EpulPayRequest"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="FeeResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="FeeResult" type="tns:FeeResult"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:complexType name="EpulPaymentStandardRequest">
+                <xs:sequence>
+                    <xs:element minOccurs="0" maxOccurs="1" name="Login" type="xs:string"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="Password" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ListServicesResult">
+                <xs:complexContent mixed="false">
+                    <xs:extension base="tns:StandardResult">
+                        <xs:sequence>
+                            <xs:element minOccurs="0" name="List" type="tns:ArrayOfService"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="EpulPaymentInfoRequest">
+                <xs:complexContent mixed="false">
+                    <xs:extension base="tns:EpulPaymentStandardRequest">
+                        <xs:sequence>
+                            <xs:element minOccurs="1" maxOccurs="1" name="ServiceId" type="xs:int"/>
+                            <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string"/>
+                            <xs:element minOccurs="0" name="Fields" type="tns:ArrayOfPaymentInfoServiceItem"/>
+                            <xs:element minOccurs="0" name="PaymentInfoServiceItem" type="tns:PaymentInfoServiceItem"/>
+                            <xs:element minOccurs="1" maxOccurs="1" name="SelectedGroupId" type="xs:int"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="ServiceInfoResult">
+                <xs:complexContent mixed="false">
+                    <xs:extension base="tns:StandardResult">
+                        <xs:sequence>
+                            <xs:element minOccurs="0" name="Info" type="tns:ServicesInfo"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="EpulPayRequest">
+                <xs:complexContent mixed="false">
+                    <xs:extension base="tns:EpulPaymentInfoRequest">
+                        <xs:sequence>
+                            <xs:element minOccurs="1" maxOccurs="1" name="Amount" type="xs:long"/>
+                            <xs:element minOccurs="0" maxOccurs="1" name="TransactionId" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="PayResult">
+                <xs:complexContent mixed="false">
+                    <xs:extension base="tns:StandardResult">
+                        <xs:sequence>
+                            <xs:element minOccurs="1" maxOccurs="1" name="PaymentId" type="xs:long"/>
+                            <xs:element minOccurs="1" maxOccurs="1" name="BatchId" type="xs:long"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="EpulSmartCardPayResult">
+                <xs:complexContent mixed="false">
+                    <xs:extension base="tns:PayResult">
+                        <xs:sequence>
+                            <xs:element minOccurs="1" maxOccurs="1" name="Balance" type="xs:int"/>
+                            <xs:element minOccurs="1" maxOccurs="1" name="CardStatus" type="xs:int"/>
+                            <xs:element minOccurs="1" maxOccurs="1" name="Credit" type="xs:int"/>
+                            <xs:element minOccurs="0" maxOccurs="1" name="Customer" type="xs:string"/>
+                            <xs:element minOccurs="1" maxOccurs="1" name="Debt" type="xs:int"/>
+                            <xs:element minOccurs="0" maxOccurs="1" name="TypeData" type="xs:string"/>
+                            <xs:element minOccurs="0" maxOccurs="1" name="Serial" type="xs:string"/>
+                            <xs:element minOccurs="0" maxOccurs="1" name="InFile" type="xs:string"/>
+                            <xs:element minOccurs="0" maxOccurs="1" name="OutFile" type="xs:string"/>
+                            <xs:element minOccurs="0" maxOccurs="1" name="ExtraFile" type="xs:string"/>
+                            <xs:element minOccurs="0" maxOccurs="1" name="MeterNumber" type="xs:string"/>
+                            <xs:element minOccurs="0" maxOccurs="1" name="OrigRef" type="xs:string"/>
+                            <xs:element minOccurs="0" maxOccurs="1" name="OrigTime" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="EpulByNameRequest">
+                <xs:complexContent mixed="false">
+                    <xs:extension base="tns:EpulPaymentStandardRequest">
+                        <xs:sequence>
+                            <xs:element minOccurs="0" maxOccurs="1" name="Value" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="EpulCheckTransactionResult">
+                <xs:complexContent mixed="false">
+                    <xs:extension base="tns:StandardResult">
+                        <xs:sequence>
+                            <xs:element minOccurs="1" maxOccurs="1" name="BatchId" type="xs:long"/>
+                            <xs:element minOccurs="1" maxOccurs="1" name="PaymentId" type="xs:long"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="EpulByIdRequest">
+                <xs:complexContent mixed="false">
+                    <xs:extension base="tns:EpulPaymentStandardRequest">
+                        <xs:sequence>
+                            <xs:element minOccurs="1" maxOccurs="1" name="Id" type="xs:long"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="EpulPaymentHistoryResult">
+                <xs:complexContent mixed="false">
+                    <xs:extension base="tns:StandardResult">
+                        <xs:sequence>
+                            <xs:element minOccurs="1" maxOccurs="1" name="Quantity" type="xs:long"/>
+                            <xs:element minOccurs="1" maxOccurs="1" name="TotalAmount" type="xs:long"/>
+                            <xs:element minOccurs="0" name="List" type="tns:ArrayOfInputPaymentHistory"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="ListPlainCategoriesResult">
+                <xs:complexContent mixed="false">
+                    <xs:extension base="tns:StandardResult">
+                        <xs:sequence>
+                            <xs:element minOccurs="0" name="List" maxOccurs="unbounded" type="tns:PlainCategory"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="FeeResult">
+                <xs:complexContent mixed="false">
+                    <xs:extension base="tns:StandardResult">
+                        <xs:sequence>
+                            <xs:element minOccurs="1" maxOccurs="1" name="FeeAmount" type="xs:long"/>
+                        </xs:sequence>
+                    </xs:extension>
+                </xs:complexContent>
+            </xs:complexType>
+            <xs:complexType name="StandardResult">
+                <xs:sequence>
+                    <xs:element minOccurs="1" maxOccurs="1" name="ResultCodes" type="tns:ResultCodes"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="Description" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="Service">
+                <xs:sequence>
+                    <xs:element minOccurs="1" maxOccurs="1" name="Id" type="xs:int"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="SubName" type="xs:string"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="PaypointPaymentType" type="xs:string"/>
+                    <xs:element minOccurs="0" name="LocalName" type="tns:MultiLangString"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="Type" type="xs:short"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="AmountType" type="tns:ServiceAmountTypes"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="IsAvailable" type="xs:boolean"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="CategoryId" type="xs:int"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="MinAmount" type="xs:int"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="MaxAmount" type="xs:long"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="AssemblyId" type="xs:string"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="Percent" type="xs:short"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="MinimalComission" type="xs:decimal"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="FloatAmount" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="ServiceFields" type="tns:ArrayOfServiceField"/>
+                    <xs:element minOccurs="0" name="SubServices" type="tns:ArrayOfSubService"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="HasDebt" type="xs:boolean"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="BonusDivider" type="xs:int"/>
+                    <xs:element minOccurs="0" name="LocalDesc" type="tns:MultiLangString"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="SmartCard" type="xs:boolean"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="HasPersonData" type="xs:boolean"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="FriendlyName" type="xs:string"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="ServiceIdIfToggled" type="xs:int"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="IsToggled" type="xs:boolean"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="IsPayAllDebtAvailable" type="xs:boolean"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="ExcludeFromRecurrentPayments" type="xs:boolean"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="IconHash" type="xs:string"/>
+                    <xs:element minOccurs="0" name="Groups" maxOccurs="unbounded" type="tns:ServiceFieldGroup"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="IsMandatorySubServiceValue" type="xs:boolean"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="PaymentInfoServiceItem">
+                <xs:sequence>
+                    <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="Value" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ServicesInfo">
+                <xs:sequence>
+                    <xs:element minOccurs="0" maxOccurs="1" name="Person" type="xs:string"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="Debt" type="xs:float"/>
+                    <xs:element minOccurs="0" name="Values" type="tns:ArrayOfServiceInfoItem"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="InternalSingleServiceInfoValue" type="xs:string"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="IsAvailable" type="xs:boolean"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="IsError" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="AdditionalInfo" type="tns:ArrayOfKeyValueString"/>
+                    <xs:element minOccurs="0" name="AdditionalFields" type="tns:ArrayOfKeyValueString"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="Currency" type="xs:string"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="CardType" type="xs:string"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="CardSerialnum" type="xs:string"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="CardInFile" type="xs:string"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="CardOutFile" type="xs:string"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="CardExtraFile" type="xs:string"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="CardError" type="xs:int"/>
+                    <xs:element minOccurs="0" name="OptionAmounts" maxOccurs="unbounded" type="tns:KeyValueString"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="PersonInfo" type="xs:string"/>
+                    <xs:element minOccurs="0" name="AttentionMessage" type="tns:MultiLangString"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="ExchangeRate" type="xs:decimal"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="ExchangeCurrency" type="xs:string"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="MinAmount" type="xs:int"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="MaxAmount" type="xs:int"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="Balance" type="xs:decimal"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="TotalAmountForPayAllDebt" type="xs:decimal"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="HasLinkPayment" type="xs:boolean"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="AmountType" type="tns:ServiceAmountTypes"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="FixedAmount" type="xs:decimal"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="SameCurrency" type="xs:boolean"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="Voen" type="xs:long"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="Verdict" type="xs:int"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="Date" type="xs:string"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="ResultCode" type="tns:ResultCodes"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="MaxAmountSetByGetInfo" type="xs:boolean"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="InputPaymentHistory">
+                <xs:sequence>
+                    <xs:element minOccurs="1" maxOccurs="1" name="Id" type="xs:long"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="TransactionId" type="xs:string"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="BatchId" type="xs:long"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="ServiceId" type="xs:int"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="ServiceName" type="xs:string"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="Amount" type="xs:long"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="InsertDate" type="xs:dateTime"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="StatusName" type="xs:string"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="Status" type="xs:int"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="SubServiceValue" type="xs:string"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="Field" type="xs:string"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="HistoryAlias" type="xs:string"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="ReturnUrl" type="xs:string"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="ErrorUrl" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="PlainCategory">
+                <xs:sequence>
+                    <xs:element minOccurs="1" maxOccurs="1" name="Id" type="xs:int"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string"/>
+                    <xs:element minOccurs="0" name="LocalName" type="tns:MultiLangString"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="MultiLangString">
+                <xs:sequence>
+                    <xs:element minOccurs="0" maxOccurs="1" name="ValueEn" type="xs:string"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="ValueRu" type="xs:string"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="ValueAz" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ServiceField">
+                <xs:sequence>
+                    <xs:element minOccurs="1" maxOccurs="1" name="Id" type="xs:int"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="ServiceId" type="xs:int"/>
+                    <xs:element minOccurs="0" name="LocalName" type="tns:MultiLangString"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="ServiceName" type="xs:string"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="Type" type="xs:string"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="RegExp" type="xs:string"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="DefaultValue" type="xs:string"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="OrderNum" type="xs:short"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="NormalizeRegExp" type="xs:string"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="NormalizePattern" type="xs:string"/>
+                    <xs:element minOccurs="0" name="ListEnums" type="tns:ArrayOfServiceFieldEnum"/>
+                    <xs:element minOccurs="0" name="LocalShortName" type="tns:MultiLangString"/>
+                    <xs:element minOccurs="0" name="LocalPlaceHolder" type="tns:MultiLangString"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="ValueIsAmount" type="xs:boolean"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="ValueMustBeExcluded" type="xs:boolean"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="IsHidden" type="xs:boolean"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="FilterFieldIdAfterSelect" type="xs:string"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="GroupId" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="SubService">
+                <xs:sequence>
+                    <xs:element minOccurs="1" maxOccurs="1" name="Id" type="xs:int"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="Value" type="xs:string"/>
+                    <xs:element minOccurs="0" name="LocaleName" type="tns:MultiLangString"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="DefaultValue" type="xs:string"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="CantPayWithoutDebt" type="xs:boolean"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="SubServiceType" type="tns:SubServiceType"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="LinkToService" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ServiceFieldGroup">
+                <xs:sequence>
+                    <xs:element minOccurs="1" maxOccurs="1" name="Id" type="xs:int"/>
+                    <xs:element minOccurs="0" name="Name" type="tns:MultiLangString"/>
+                    <xs:element minOccurs="0" name="Fields" maxOccurs="unbounded" type="tns:ServiceField"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="OrderNumber" type="xs:int"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ServiceInfoItem">
+                <xs:sequence>
+                    <xs:element minOccurs="0" maxOccurs="1" name="Id" type="xs:string"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="Title" type="xs:string"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="Value" type="xs:string"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="Amount" type="xs:int"/>
+                    <xs:element minOccurs="0" name="LocaleName" type="tns:MultiLangString"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="CantPayWithoutDebt" type="xs:boolean"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="ShowAmount" type="xs:boolean"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="Currency" type="xs:string"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="FixedAmount" type="xs:boolean"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="ReadOnly" type="xs:boolean"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="CurrencyConverterExists" type="xs:boolean"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="ExchangeRate" type="xs:decimal"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="HasAdditionalInfo" type="xs:boolean"/>
+                    <xs:element minOccurs="0" name="AdditionalInfoBasedOnServiceInfoItem" maxOccurs="unbounded" type="tns:KeyValueString"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="SubServiceType" type="tns:SubServiceType"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="LinkToService" type="xs:int"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="LinkToServiceFields" type="xs:string"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="MaxAmount" type="xs:int"/>
+                    <xs:element minOccurs="1" maxOccurs="1" name="SameCurrency" type="xs:boolean"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="KeyValueString">
+                <xs:sequence>
+                    <xs:element minOccurs="0" maxOccurs="1" name="Key" type="xs:string"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="Value" type="xs:string"/>
+                    <xs:element minOccurs="0" name="MutliLangValueString" type="tns:MultiLangString"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ServiceFieldEnum">
+                <xs:sequence>
+                    <xs:element minOccurs="1" maxOccurs="1" name="FieldId" type="xs:int"/>
+                    <xs:element minOccurs="0" name="LocaleName" type="tns:MultiLangString"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="Name" type="xs:string"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="Value" type="xs:string"/>
+                    <xs:element minOccurs="0" maxOccurs="1" name="FilteredFieldValue" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:simpleType name="ResultCodes">
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="Ok"/>
+                    <xs:enumeration value="InvalidNumber"/>
+                    <xs:enumeration value="InvalidParameters"/>
+                    <xs:enumeration value="InvalidTerminal"/>
+                    <xs:enumeration value="InvalidKey"/>
+                    <xs:enumeration value="InvalidSignature"/>
+                    <xs:enumeration value="InvalidUsernameOrPassword"/>
+                    <xs:enumeration value="InvalidSession"/>
+                    <xs:enumeration value="NoPriv"/>
+                    <xs:enumeration value="LoginFailed"/>
+                    <xs:enumeration value="InvalidVerifyCode"/>
+                    <xs:enumeration value="NotPayeed"/>
+                    <xs:enumeration value="PaymentDeclined"/>
+                    <xs:enumeration value="Reversal"/>
+                    <xs:enumeration value="TransactionIdAlreadyExists"/>
+                    <xs:enumeration value="CustomerNotFound"/>
+                    <xs:enumeration value="InvalidAmount"/>
+                    <xs:enumeration value="InvalidCurrency"/>
+                    <xs:enumeration value="TransactionIdNotFound"/>
+                    <xs:enumeration value="AccessDeniedForDbItem"/>
+                    <xs:enumeration value="EmailStillInUse"/>
+                    <xs:enumeration value="PhoneStillInUse"/>
+                    <xs:enumeration value="UserTempBlocked"/>
+                    <xs:enumeration value="DeviceHashCodeNotCorrectlyDecrypted"/>
+                    <xs:enumeration value="OperationFailed"/>
+                    <xs:enumeration value="UserNotActivated"/>
+                    <xs:enumeration value="UserStillActivate"/>
+                    <xs:enumeration value="MobileUserLocked"/>
+                    <xs:enumeration value="MobileDeviceRevoked"/>
+                    <xs:enumeration value="PasswordChanged"/>
+                    <xs:enumeration value="MobileOtpSendLimitExceeded"/>
+                    <xs:enumeration value="EmailApproved"/>
+                    <xs:enumeration value="NoEmailFound"/>
+                    <xs:enumeration value="AsanSessionError"/>
+                    <xs:enumeration value="OnlyAsanLoginAllowed"/>
+                    <xs:enumeration value="OtpCheckLimitExceeded"/>
+                    <xs:enumeration value="OtpSendLimitExceeded"/>
+                    <xs:enumeration value="NotFound"/>
+                    <xs:enumeration value="EmailSendLimitExceeded"/>
+                    <xs:enumeration value="PaymentInfoServiceItemNotSelected"/>
+                    <xs:enumeration value="NoGiftInStock"/>
+                    <xs:enumeration value="ReceiverWalletLimitExceeded"/>
+                    <xs:enumeration value="WrongPromoCode"/>
+                    <xs:enumeration value="AsanPaymentIsAlreadyPaid"/>
+                    <xs:enumeration value="SmsSendLimitExceeded"/>
+                    <xs:enumeration value="SmsSend"/>
+                    <xs:enumeration value="UndecidedProtocol"/>
+                    <xs:enumeration value="ProtocolCantDecided"/>
+                    <xs:enumeration value="ProtocolNotFound"/>
+                    <xs:enumeration value="MinTarifPay"/>
+                    <xs:enumeration value="AlreadyHasPayment"/>
+                    <xs:enumeration value="MasterpassError"/>
+                    <xs:enumeration value="InactiveGiftCard"/>
+                    <xs:enumeration value="Timeout"/>
+                    <xs:enumeration value="WalletNotIdentified"/>
+                    <xs:enumeration value="UnknownError"/>
+                    <xs:enumeration value="SystemError"/>
+                    <xs:enumeration value="RemoteServerError"/>
+                    <xs:enumeration value="PossibleServiceError"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="ServiceAmountTypes">
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="NotSet"/>
+                    <xs:enumeration value="Default"/>
+                    <xs:enumeration value="Fixed"/>
+                    <xs:enumeration value="Option"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:simpleType name="SubServiceType">
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="Standart"/>
+                    <xs:enumeration value="LinkPayment"/>
+                </xs:restriction>
+            </xs:simpleType>
+            <xs:complexType name="ArrayOfService">
+                <xs:sequence>
+                    <xs:element minOccurs="0" nillable="true" maxOccurs="unbounded" name="Service" type="tns:Service"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ArrayOfPaymentInfoServiceItem">
+                <xs:sequence>
+                    <xs:element minOccurs="0" nillable="true" maxOccurs="unbounded" name="PaymentInfoServiceItem" type="tns:PaymentInfoServiceItem"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ArrayOfInputPaymentHistory">
+                <xs:sequence>
+                    <xs:element minOccurs="0" nillable="true" maxOccurs="unbounded" name="InputPaymentHistory" type="tns:InputPaymentHistory"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ArrayOfServiceField">
+                <xs:sequence>
+                    <xs:element minOccurs="0" nillable="true" maxOccurs="unbounded" name="ServiceField" type="tns:ServiceField"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ArrayOfSubService">
+                <xs:sequence>
+                    <xs:element minOccurs="0" nillable="true" maxOccurs="unbounded" name="SubService" type="tns:SubService"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ArrayOfServiceInfoItem">
+                <xs:sequence>
+                    <xs:element minOccurs="0" nillable="true" maxOccurs="unbounded" name="ServiceInfoItem" type="tns:ServiceInfoItem"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ArrayOfKeyValueString">
+                <xs:sequence>
+                    <xs:element minOccurs="0" nillable="true" maxOccurs="unbounded" name="KeyValueString" type="tns:KeyValueString"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="ArrayOfServiceFieldEnum">
+                <xs:sequence>
+                    <xs:element minOccurs="0" nillable="true" maxOccurs="unbounded" name="ServiceFieldEnum" type="tns:ServiceFieldEnum"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="EpulPaymentService_ListServices_InputMessage">
+        <wsdl:part name="parameters" element="tns:ListServices"/>
+    </wsdl:message>
+    <wsdl:message name="EpulPaymentService_ListServices_OutputMessage">
+        <wsdl:part name="parameters" element="tns:ListServicesResponse"/>
+    </wsdl:message>
+    <wsdl:message name="EpulPaymentService_GetPaymentServiceInfo_InputMessage">
+        <wsdl:part name="parameters" element="tns:GetPaymentServiceInfo"/>
+    </wsdl:message>
+    <wsdl:message name="EpulPaymentService_GetPaymentServiceInfo_OutputMessage">
+        <wsdl:part name="parameters" element="tns:GetPaymentServiceInfoResponse"/>
+    </wsdl:message>
+    <wsdl:message name="EpulPaymentService_Pay_InputMessage">
+        <wsdl:part name="parameters" element="tns:Pay"/>
+    </wsdl:message>
+    <wsdl:message name="EpulPaymentService_Pay_OutputMessage">
+        <wsdl:part name="parameters" element="tns:PayResponse"/>
+    </wsdl:message>
+    <wsdl:message name="EpulPaymentService_PaySmartCard_InputMessage">
+        <wsdl:part name="parameters" element="tns:PaySmartCard"/>
+    </wsdl:message>
+    <wsdl:message name="EpulPaymentService_PaySmartCard_OutputMessage">
+        <wsdl:part name="parameters" element="tns:PaySmartCardResponse"/>
+    </wsdl:message>
+    <wsdl:message name="EpulPaymentService_CheckTransaction_InputMessage">
+        <wsdl:part name="parameters" element="tns:CheckTransaction"/>
+    </wsdl:message>
+    <wsdl:message name="EpulPaymentService_CheckTransaction_OutputMessage">
+        <wsdl:part name="parameters" element="tns:CheckTransactionResponse"/>
+    </wsdl:message>
+    <wsdl:message name="EpulPaymentService_ListHistory_InputMessage">
+        <wsdl:part name="parameters" element="tns:ListHistory"/>
+    </wsdl:message>
+    <wsdl:message name="EpulPaymentService_ListHistory_OutputMessage">
+        <wsdl:part name="parameters" element="tns:ListHistoryResponse"/>
+    </wsdl:message>
+    <wsdl:message name="EpulPaymentService_ListCategories_InputMessage">
+        <wsdl:part name="parameters" element="tns:ListCategories"/>
+    </wsdl:message>
+    <wsdl:message name="EpulPaymentService_ListCategories_OutputMessage">
+        <wsdl:part name="parameters" element="tns:ListCategoriesResponse"/>
+    </wsdl:message>
+    <wsdl:message name="EpulPaymentService_ListServicesByCategory_InputMessage">
+        <wsdl:part name="parameters" element="tns:ListServicesByCategory"/>
+    </wsdl:message>
+    <wsdl:message name="EpulPaymentService_ListServicesByCategory_OutputMessage">
+        <wsdl:part name="parameters" element="tns:ListServicesByCategoryResponse"/>
+    </wsdl:message>
+    <wsdl:message name="EpulPaymentService_Fee_InputMessage">
+        <wsdl:part name="parameters" element="tns:Fee"/>
+    </wsdl:message>
+    <wsdl:message name="EpulPaymentService_Fee_OutputMessage">
+        <wsdl:part name="parameters" element="tns:FeeResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="EpulPaymentService">
+        <wsdl:operation name="ListServices">
+            <wsdl:input wsaw:Action="http://quetzalcoatlus/EpulPaymentService/EpulPaymentService/ListServices" message="tns:EpulPaymentService_ListServices_InputMessage"/>
+            <wsdl:output wsaw:Action="http://quetzalcoatlus/EpulPaymentService/EpulPaymentService/ListServicesResponse" message="tns:EpulPaymentService_ListServices_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetPaymentServiceInfo">
+            <wsdl:input wsaw:Action="http://quetzalcoatlus/EpulPaymentService/EpulPaymentService/GetPaymentServiceInfo" message="tns:EpulPaymentService_GetPaymentServiceInfo_InputMessage"/>
+            <wsdl:output wsaw:Action="http://quetzalcoatlus/EpulPaymentService/EpulPaymentService/GetPaymentServiceInfoResponse" message="tns:EpulPaymentService_GetPaymentServiceInfo_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="Pay">
+            <wsdl:input wsaw:Action="http://quetzalcoatlus/EpulPaymentService/EpulPaymentService/Pay" message="tns:EpulPaymentService_Pay_InputMessage"/>
+            <wsdl:output wsaw:Action="http://quetzalcoatlus/EpulPaymentService/EpulPaymentService/PayResponse" message="tns:EpulPaymentService_Pay_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="PaySmartCard">
+            <wsdl:input wsaw:Action="http://quetzalcoatlus/EpulPaymentService/EpulPaymentService/PaySmartCard" message="tns:EpulPaymentService_PaySmartCard_InputMessage"/>
+            <wsdl:output wsaw:Action="http://quetzalcoatlus/EpulPaymentService/EpulPaymentService/PaySmartCardResponse" message="tns:EpulPaymentService_PaySmartCard_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="CheckTransaction">
+            <wsdl:input wsaw:Action="http://quetzalcoatlus/EpulPaymentService/EpulPaymentService/CheckTransaction" message="tns:EpulPaymentService_CheckTransaction_InputMessage"/>
+            <wsdl:output wsaw:Action="http://quetzalcoatlus/EpulPaymentService/EpulPaymentService/CheckTransactionResponse" message="tns:EpulPaymentService_CheckTransaction_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="ListHistory">
+            <wsdl:input wsaw:Action="http://quetzalcoatlus/EpulPaymentService/EpulPaymentService/ListHistory" message="tns:EpulPaymentService_ListHistory_InputMessage"/>
+            <wsdl:output wsaw:Action="http://quetzalcoatlus/EpulPaymentService/EpulPaymentService/ListHistoryResponse" message="tns:EpulPaymentService_ListHistory_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="ListCategories">
+            <wsdl:input wsaw:Action="http://quetzalcoatlus/EpulPaymentService/EpulPaymentService/ListCategories" message="tns:EpulPaymentService_ListCategories_InputMessage"/>
+            <wsdl:output wsaw:Action="http://quetzalcoatlus/EpulPaymentService/EpulPaymentService/ListCategoriesResponse" message="tns:EpulPaymentService_ListCategories_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="ListServicesByCategory">
+            <wsdl:input wsaw:Action="http://quetzalcoatlus/EpulPaymentService/EpulPaymentService/ListServicesByCategory" message="tns:EpulPaymentService_ListServicesByCategory_InputMessage"/>
+            <wsdl:output wsaw:Action="http://quetzalcoatlus/EpulPaymentService/EpulPaymentService/ListServicesByCategoryResponse" message="tns:EpulPaymentService_ListServicesByCategory_OutputMessage"/>
+        </wsdl:operation>
+        <wsdl:operation name="Fee">
+            <wsdl:input wsaw:Action="http://quetzalcoatlus/EpulPaymentService/EpulPaymentService/Fee" message="tns:EpulPaymentService_Fee_InputMessage"/>
+            <wsdl:output wsaw:Action="http://quetzalcoatlus/EpulPaymentService/EpulPaymentService/FeeResponse" message="tns:EpulPaymentService_Fee_OutputMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="SOAP" type="tns:EpulPaymentService">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="ListServices">
+            <soap:operation soapAction="http://quetzalcoatlus/EpulPaymentService/EpulPaymentService/ListServices" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetPaymentServiceInfo">
+            <soap:operation soapAction="http://quetzalcoatlus/EpulPaymentService/EpulPaymentService/GetPaymentServiceInfo" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Pay">
+            <soap:operation soapAction="http://quetzalcoatlus/EpulPaymentService/EpulPaymentService/Pay" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="PaySmartCard">
+            <soap:operation soapAction="http://quetzalcoatlus/EpulPaymentService/EpulPaymentService/PaySmartCard" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="CheckTransaction">
+            <soap:operation soapAction="http://quetzalcoatlus/EpulPaymentService/EpulPaymentService/CheckTransaction" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="ListHistory">
+            <soap:operation soapAction="http://quetzalcoatlus/EpulPaymentService/EpulPaymentService/ListHistory" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="ListCategories">
+            <soap:operation soapAction="http://quetzalcoatlus/EpulPaymentService/EpulPaymentService/ListCategories" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="ListServicesByCategory">
+            <soap:operation soapAction="http://quetzalcoatlus/EpulPaymentService/EpulPaymentService/ListServicesByCategory" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Fee">
+            <soap:operation soapAction="http://quetzalcoatlus/EpulPaymentService/EpulPaymentService/Fee" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="EpulPaymentService">
+        <wsdl:port name="SOAP" binding="tns:SOAP">
+            <soap:address location="http://online.e-pul.az:5000/EpulPaymentService.asmx"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
